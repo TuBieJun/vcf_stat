@@ -41,7 +41,7 @@ fn main() {
         let gt_vec:Vec<&str> = re.split(format_vec[0]).collect();
         let mut allele_list:Vec<&str> = Vec::new();
         allele_list.push(info_vec[3]);
-        let alt_list:Vec<&str> = info_vec[4].split('\t').collect();
+        let alt_list:Vec<&str> = info_vec[4].split(',').collect();
         allele_list.extend(alt_list);
         //println!("{:?}", gt_vec);
         let index_1:usize = gt_vec[0].parse().unwrap();
