@@ -4,8 +4,8 @@ use std::io::prelude::*;
 use std::io::BufReader;
 use std::fs::File;
 
-extern crate regex;
-use regex::Regex;
+//extern crate regex;
+//use regex::Regex;
 
 fn main() {
     let args:Vec<String> = env::args().collect();
@@ -37,8 +37,9 @@ fn main() {
             is_dbsnp = 1;
         }
         let format_vec:Vec<&str> = info_vec[9].split(':').collect();
-        let re = Regex::new(r"[|/]").unwrap();
-        let gt_vec:Vec<&str> = re.split(format_vec[0]).collect();
+        //let re = Regex::new(r"[|/]").unwrap();
+        //let gt_vec:Vec<&str> = re.split(format_vec[0]).collect();
+        let gt_vec:Vec<&str> = format_vec[0].split(|c| c== '|' || c == '/').collect();
         let mut allele_list:Vec<&str> = Vec::new();
         allele_list.push(info_vec[3]);
         let alt_list:Vec<&str> = info_vec[4].split(',').collect();
